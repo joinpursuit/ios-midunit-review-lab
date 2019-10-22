@@ -9,6 +9,8 @@ Input: `Hello, there`
 
 Output: `HELLO, THERE`
 
+I will write a code here:
+
 2. **Given a String, return a String alternating between uppercase and lowercase letters**
 
 
