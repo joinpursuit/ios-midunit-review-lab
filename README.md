@@ -8,6 +8,10 @@
 Input: `Hello, there`
 
 Output: `HELLO, THERE`
+```
+var str = "Hello, there"
+print(str.uppercased())
+```
 
 2. **Given a String, return a String alternating between uppercase and lowercase letters**
 
