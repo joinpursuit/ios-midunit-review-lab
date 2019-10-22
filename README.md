@@ -154,8 +154,8 @@ Output: `["We", "come", "in", "peace"]`
 
 Answer
 ```swift
-func productElement(arr: [Double]) -> Double {
-    return arr.reduce(1, *)
+func removeNil(arr: [String?]) -> [String] {
+    return arr.compactMap({ $0 })
 }
 ```
 2. **Given an array of type [String?]? return an array of [String] removing all nil values**
@@ -164,14 +164,42 @@ Input: `nil`
 
 Output: `[]`
 
+Answer
+```swift
+func removeNil(arr: [String?]?) -> [String] {
+    
+    if let arr = arr {
+        return arr.compactMap({ $0 })
+    }
+    return []
+}
+```
 3. **Given an array of type [Int?] return the sum of all non-nil values.  Use guard statements in your solution.**
 
 Input: `[4, nil, 9, 5, nil]`
 
 Output: `18`
 
+Answer
+```swift
+func removeNil(arr: [Int?]) -> [Int] {
+    var list = [Int]()
+    for num in arr {
+        guard let num = num else { return [] }
+        list.append(num)
+    }
+    return list
+}
+```
 4. **Given an array of type [Int?]? return the sum of all non-nil values.  Use guard statements in your solution.**
 
+Answer
+```swift
+func removeNil(arr: [Int?]?) -> [Int] {
+    guard let arr = arr else { return [] }
+    return arr.compactMap({ $0 })
+}
+```
 Input: `nil`
 
 Output: `0`
@@ -182,7 +210,14 @@ Input: `[1, 1, nil, 3, 5, nil, 1, nil, 3, 5, nil, 5, nil, 3], 1`
 
 Output: `24`
 
-
+Answer
+```swift
+func sumExceptTheGivenNumber(arr: [Int?], num: Int) -> Int {
+    return arr.compactMap({ $0 })
+        .filter { $0 != num }
+        .reduce(0, +)
+}
+```
 ## Dictionaries
 
 1. **Given an array of type [String], return a copy of the array with all duplicate values removed**
