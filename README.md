@@ -18,6 +18,22 @@ Input: `Hello, there`
 
 Output: `HeLlO, tHeRe`
 
+```swift
+var string = "Hello, there"
+var counter = 0
+var emptyString = ""
+for letter in string {
+    counter += 1
+    if counter % 2 != 0 {
+        emptyString += letter.uppercased()
+    } else {
+        emptyString += String(letter)
+    }
+}
+print(emptyString)
+
+```
+
 
 3. **Given a String, return a String with all occurrences of a given letter removed**
 
