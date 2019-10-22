@@ -58,43 +58,92 @@ Input: `[1,5,2,4,1,4]`
 
 Output: `5`
 
+Answer
+```swift
+func maxElement(arr: [Int]) -> Int {
+    return arr.max() ?? 0
+}
+```
 2. **Given an array of type [Int], return the smallest element**
 
 Input: `[1,5,2,4,1,4]`
 
 Output: `1`
 
+Answer
+```swift
+func minElement(arr: [Int]) -> Int {
+    return arr.min() ?? 0
+}
+```
 3. **Given an array of type [Int], return its sum**
 
 Input: `[1,5,2,4,1,4]`
 
 Output: `17`
 
+Answer
+```swift
+func sumElement(arr: [Int]) -> Int {
+    return arr.reduce(0, +)
+}
+```
 4. **Given an array of type [Double], return its average**
 
 Input: `[3,4.5,7.5,2,1]`
 
 Output: `3.6`
 
+Answer
+```swift
+func averageElement(arr: [Double]) -> Double {
+    return arr.reduce(0, +) / Double(arr.count)
+}
+```
 5. **Given an array of type [Double] and a Double, return the sum of all numbers in the array greater than a given number**
 
 Input: `[3,4.5,7.5,2,1], 3`
 
 Output: `12`
 
-
+Answer
+```swift
+func sumOfFilteredElement(arr: [Double], num: Double) -> Double {
+    var sum = 0.0
+    for number in arr {
+        if number > num {
+            sum += number
+        }
+    }
+    return sum
+}
+```
 6. **Given an array of type [Double], return the product of all the elements**
 
 Input: `[3,4.5,7.5,2,1]`
 
 Output: `202.5`
 
+Answer
+```swift
+func productElement(arr: [Double]) -> Double {
+    return arr.reduce(1, *)
+}
+```
 7. **Given an array of type [Int], return the second smallest value in the array**
 
 Input: `[3,6,1,9,4,8]`
 
 Output: `3`
 
+Answer
+```swift
+func secoundSmallestElement(arr: [Int]) -> Int {
+    let arr = arr.sorted()
+    
+    return arr[1]
+}
+```
 ## Optionals
 
 1. **Given an array of type [String?] return an array of [String] removing all nil values**
@@ -103,6 +152,12 @@ Input: `[nil, "We", "come", nil, "in", "peace"]`
 
 Output: `["We", "come", "in", "peace"]`
 
+Answer
+```swift
+func productElement(arr: [Double]) -> Double {
+    return arr.reduce(1, *)
+}
+```
 2. **Given an array of type [String?]? return an array of [String] removing all nil values**
 
 Input: `nil`
