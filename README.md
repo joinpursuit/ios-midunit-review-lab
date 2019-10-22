@@ -9,6 +9,13 @@ Input: `Hello, there`
 
 Output: `HELLO, THERE`
 
+Answer
+```swift
+func uppercase(str: String) -> String {
+    return str.uppercased()
+}
+```
+
 2. **Given a String, return a String alternating between uppercase and lowercase letters**
 
 
@@ -16,14 +23,32 @@ Input: `Hello, there`
 
 Output: `HeLlO, tHeRe`
 
-
+Answer
+```swift
+func updown(str: String) -> String {
+    var customString = ""
+    for (index, char) in str.enumerated() {
+        if index % 2 == 0 {
+            customString += char.uppercased()
+        } else {
+            customString += char.lowercased()
+        }
+    }
+    return customString
+}
+```
 3. **Given a String, return a String with all occurrences of a given letter removed**
 
 Input: `Hello, there`
 
 Output: `Hllo, thr`
 
-
+Answer
+```swift
+func removeLetter(str1: String, str2: String) -> String {
+    return str1.replacingOccurrences(of: str2, with: "")
+}
+```
 ## Arrays
 
 
