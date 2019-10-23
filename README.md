@@ -274,6 +274,8 @@ func sumNotEq (inputArr arr: [Int?], targetNum: Int?) -> Int {
             if validNum != validTargetNum {
                 sum += validNum
             }
+        } else {
+            sum += validNum
         }
     }
     return sum
@@ -287,6 +289,10 @@ func sumNotEq (inputArr arr: [Int?], targetNum: Int?) -> Int {
 Input: `["apple", "apple", "banana", "banana", "banana", "cake", "cake"]`
 
 Output: `["apple", "banana", "cake"]`
+
+```swift
+
+```
 
 2. **Given a String, find the most frequently occurring letter**
 
