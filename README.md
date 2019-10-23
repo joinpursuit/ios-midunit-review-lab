@@ -263,7 +263,7 @@ Input: `[1, 1, nil, 3, 5, nil, 1, nil, 3, 5, nil, 5, nil, 3], 1`
 
 Output: `24`
 
-```
+```swift
 func sumNotEq (inputArr arr: [Int?], targetNum: Int?) -> Int {
     var sum = 0
     for num in arr {
@@ -291,7 +291,10 @@ Input: `["apple", "apple", "banana", "banana", "banana", "cake", "cake"]`
 Output: `["apple", "banana", "cake"]`
 
 ```swift
-
+func noDups (inputArr arr: [String]) -> [String]{
+    let setToArr = Array(Set(arr))
+    return setToArr
+}
 ```
 
 2. **Given a String, find the most frequently occurring letter**
@@ -300,17 +303,60 @@ Input: `Never trust a computer you can't throw out a window ~ Steve Wozniak`
 
 Output: `t`
 
+```swift
+func mostFreqChar (inputStr str: String) -> Character {
+    var freqDict = [Character: Int]()
+    var mostFreqChar:Character = "?"
+    var highestCharCount = 0
+    
+    for char in str where char != " "{
+        freqDict[char] = (freqDict[char] ?? 0) + 1
+    }
+    
+    for (key, value) in freqDict{
+        if highestCharCount < value {
+            highestCharCount = value
+            mostFreqChar = key
+        }
+    }
+    return mostFreqChar
+}
+```
+
 3. **Given an array of type [Int], return a copy of the array that contains only elements that appear at least twice**
 
 Input: `[1,1,2,3,3,3,4,5,6,6,7]`
 
 Output: `[1,3,6]`
 
+```swift
+func mostFreqNum2 (inputIntArr arr: [Int]) -> [Int] {
+    var freqDict = [Int: Int]()
+    var numThatAppearTwice = [Int]()
+    
+    
+    for num in arr{
+        freqDict[num] = (freqDict[num] ?? 0) + 1
+    }
+    
+    for (key, value) in freqDict{
+        if value >= 2 {
+            numThatAppearTwice.append(key)
+        }
+    }
+    return numThatAppearTwice
+}
+```
+
 4. **Given a String, find the second most frequently occurring letter in a string**
 
 Input: `Never trust a computer you can't throw out a window ~ Steve Wozniak`
 
 Output `o`
+
+```swift
+
+```
 
 
 ## Closures
