@@ -78,19 +78,39 @@ Output: `17`
 Input: `[3,4.5,7.5,2,1]`
 
 Output: `3.6`
+```
+var doubleArray = [3,4.5,7.5,2,1]
+var countDouble = Double(doubleArray.count)
+var averageOfArray = doubleArray.reduce(0, +) / countDouble
+print(averageOfArray)
+```
 
 5. **Given an array of type [Double] and a Double, return the sum of all numbers in the array greater than a given number**
 
 Input: `[3,4.5,7.5,2,1], 3`
 
 Output: `12`
-
+```
+var doubleArray = [3,4.5,7.5,2,1]
+var sumOfDoublesGreaterThenThree = 0.0
+for num in doubleArray {
+    if num > 3.0 {
+        sumOfDoublesGreaterThenThree += num
+    }
+}
+print(sumOfDoublesGreaterThenThree)
+```
 
 6. **Given an array of type [Double], return the product of all the elements**
 
 Input: `[3,4.5,7.5,2,1]`
 
 Output: `202.5`
+```
+var productOfDoubles = doubleArray.reduce(1, *)
+
+print(productOfDoubles)
+```
 
 7. **Given an array of type [Int], return the second smallest value in the array**
 
