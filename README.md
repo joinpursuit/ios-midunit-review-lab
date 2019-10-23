@@ -288,6 +288,37 @@ Input: `Never trust a computer you can't throw out a window ~ Steve Wozniak`
 
 Output `o`
 
+Answer
+```swift
+func secondFrequentWord(str: String) -> String {
+    var dict = [Character: Int]()
+    var mostUsed = ""
+    var mostUsedCount = 0
+    var secondUsed = ""
+    var secondUsedCount = 0
+    
+    for char in str.lowercased() where char != " " {
+        if dict[char] == nil {
+            dict[char] = 1
+        } else {
+            dict[char] = (dict[char] ?? 0) + 1
+        }
+    }
+    
+    for (char, count) in dict {
+        if count > mostUsedCount {
+            secondUsedCount = mostUsedCount
+            secondUsed = mostUsed
+            mostUsedCount = count
+            mostUsed = String(char)
+        } else if count > secondUsedCount {
+            secondUsed = String(char)
+            secondUsedCount = count
+        }
+    }
+    return secondUsed
+}
+```
 
 ## Closures
 
@@ -297,25 +328,56 @@ Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a",
 
 Output: `["Never", "a", "a", "can\'t", "computer", "out", "throw", "trust", "window", "you"]`
 
+Answer
+```swift
+func sortWord(arr: [String]) -> [String] {
+    return arr.sorted()
+}
+```
 2. **Given an array of type [String], return an array that contains the Strings sorted by length**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `["a", "a", "you", "out", "Never", "trust", "can\'t", "throw", "window", "computer"]`
 
+Answer
+```swift
+func sortedByLength(arr: [String]) -> [String] {
+    return arr.sorted { $0.count < $1.count }
+}
+```
 3. **Given an array of type [String], return an array containing all Strings at least 4 characters long**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `["Never", "trust", "computer", "can\'t", "throw", "window"]`
 
+Answer
+```swift
+func sortedByBiggerThenX(arr: [String], num: Int) -> [String] {
+    return arr.sorted { $0.count < $1.count }.filter { $0.count > num }
+}
+```
 4. **Given an array of type [String], return a String containing all of the Strings from the array combined and separated by spaces.  Do this first without using the `joined(separator:) method`**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `Never trust a computer you can't throw out a window`
 
-
+Answer
+```swift
+func mergingArrOfStr(arr: [String]) -> String {
+    var finalString = ""
+    for (index, word) in arr.enumerated() {
+        if index == arr.count - 1 {
+            finalString += word
+        } else {
+            finalString += "\(word) "
+        }
+    }
+    return finalString
+}
+```
 ## Enums
 
 
@@ -332,6 +394,17 @@ Input: `[1,2,3,4,5,6], NumberType.odd`
 
 Output: `[1,3,5]`
 
+Answer
+```swift
+func evenOrOddNumber(arr: [Int], numberType: NumberType) -> [Int] {
+    switch numberType {
+    case .even:
+        return arr.filter { $0 % 2 == 0 }
+    case .odd:
+        return arr.filter {  $0 % 2 == 1 }
+    }
+}
+```
 2. **Given a String and an instance of StringType (defined below), return the String either lowercased or uppercased**
 
 ```swift
@@ -345,6 +418,17 @@ Input: `"Design is not just what it looks like and feels like. Design is how it 
 
 Output: ``"DESIGN IS NOT JUST WHAT IT LOOKS LIKE AND FEELS LIKE. DESIGN IS HOW IT WORKS"``
 
+Answer
+```swift
+func lowOrUp(arr: [String], stringType: StringType) -> [String] {
+    switch stringType {
+    case .lowercase:
+        return arr.map { $0.lowercased() }
+    case .uppercase:
+        return arr.map { $0.uppercased() }
+    }
+}
+```
 3. **Given an array of type [FileStatus] (defined below) and an Int, return an array containing only files that were saved more than that many times**
 
 ```swift
@@ -363,3 +447,20 @@ enum FileStatus: CustomStringConvertible {
 Input: `[FileStatus.saved(numberOfVersions: 5), FileStatus.saved(numberOfVersions: 3), FileStatus.saved(numberOfVersions: 8)], 4`
 
 Output: `[File that has been saved 5 times, File that has been saved 8 times]`
+
+Answer
+```swift
+func filterFile(arr: [FileStatus], num: Int) -> [FileStatus] {
+    var fileArr = [FileStatus]()
+    for element in fileArr {
+       switch element {
+        case .saved(let numberOfVersions):
+            if numberOfVersions > num {
+                fileArr.append(element)
+            }
+        case .unsaved: continue
+        }
+    }
+    return fileArr
+}
+```
