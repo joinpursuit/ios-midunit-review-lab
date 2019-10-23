@@ -226,17 +226,61 @@ Input: `["apple", "apple", "banana", "banana", "banana", "cake", "cake"]`
 
 Output: `["apple", "banana", "cake"]`
 
+Answer
+```swift
+func removeDuplicate(arr: [String]) -> Set<String> {
+    return Set(arr)
+}
+```
 2. **Given a String, find the most frequently occurring letter**
 
 Input: `Never trust a computer you can't throw out a window ~ Steve Wozniak`
 
 Output: `t`
 
+Answer
+```swift
+func mostFrequentLetter(str: String) -> String {
+    var dict:[Character: Int]  = [:]
+    var count = 0
+    var mostFrequentStr = ""
+    
+    for char in str {
+        if dict[char] == nil {
+            dict[char] = 1
+        } else {
+            dict[char] = (dict[char] ?? 0) + 1
+        }
+    }
+    for (char, num) in dict where char != " "{
+        if num > count {
+            count = num
+            mostFrequentStr = String(char)
+        }
+    }
+    return mostFrequentStr
+}
+```
 3. **Given an array of type [Int], return a copy of the array that contains only elements that appear at least twice**
 
 Input: `[1,1,2,3,3,3,4,5,6,6,7]`
 
 Output: `[1,3,6]`
+Answer
+```swift
+func apperedTwice(arr: [Int]) -> Set<Int> {
+    var uniquNum = Set[]
+    var numApperedTwice = [Set]()
+    for num in arr {
+        if !uniquNum.contains(num) {
+            uniquNum.insert(num)
+        } else {
+        numApperedTwice.insert(num)
+        }
+    }
+    return numApperedTwice
+}
+```
 
 4. **Given a String, find the second most frequently occurring letter in a string**
 
