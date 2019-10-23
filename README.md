@@ -26,7 +26,13 @@ Output: `HeLlO, tHeRe`
 Input: `Hello, there`
 
 Output: `Hllo, thr`
+```
+var str = "Hello, there"
 
+var noEString = str.replacingOccurrences(of: "e", with: "")
+
+print(noEString)
+```
 
 ## Arrays
 
@@ -36,16 +42,34 @@ Output: `Hllo, thr`
 Input: `[1,5,2,4,1,4]`
 
 Output: `5`
-
+```
+var myArray = [1,5,2,4,1,4]
+var sortedArray = myArray.sorted()
+var largstNumInArray = sortedArray[sortedArray.count - 1]
+print(largstNumInArray)
+```
 2. **Given an array of type [Int], return the smallest element**
 
 Input: `[1,5,2,4,1,4]`
 
 Output: `1`
-
+```
+var arraOfInts = [1,5,2,4,1,4]
+var smallestNumInArray = arraOfInts.sorted()[0]
+```
 3. **Given an array of type [Int], return its sum**
 
 Input: `[1,5,2,4,1,4]`
+```
+var arrayOfNums = [1,5,2,4,1,4]
+var sum = arrayOfNums.reduce(0, +)
+or
+var sum = 0
+for num in arrayOfNums{
+    sum += num
+}
+print(sum)
+```
 
 Output: `17`
 
