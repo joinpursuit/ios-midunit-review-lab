@@ -355,7 +355,33 @@ Input: `Never trust a computer you can't throw out a window ~ Steve Wozniak`
 Output `o`
 
 ```swift
-
+func most2ndFreqChar (inputStr str: String) -> Character {
+    var freqDict = [Character: Int]()
+    var mostFreqChar:Character = "?"
+    var most2ndFreqChar:Character = "!"
+    var highestCharCount = 0
+    var secondHighestCharCount = 0
+    
+    for char in str where char != " "{
+        freqDict[char] = (freqDict[char] ?? 0) + 1
+    }
+    
+    for (key, value) in freqDict{
+        if highestCharCount < value {
+            highestCharCount = value
+            mostFreqChar = key
+        }
+    }
+    
+    for (key, value) in freqDict{
+        if secondHighestCharCount < value && value < highestCharCount{
+            secondHighestCharCount = value
+            most2ndFreqChar = key
+        }
+    }
+    
+    return most2ndFreqChar
+}
 ```
 
 
@@ -367,11 +393,23 @@ Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a",
 
 Output: `["Never", "a", "a", "can\'t", "computer", "out", "throw", "trust", "window", "you"]`
 
+```swift
+func strArrSorted(inputArr input:[String]) -> [String] {
+    return input.sorted()
+}
+```
+
 2. **Given an array of type [String], return an array that contains the Strings sorted by length**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `["a", "a", "you", "out", "Never", "trust", "can\'t", "throw", "window", "computer"]`
+
+```swift
+func strArrSortedLength(inputArr input:[String]) -> [String] {
+    input.sorted (by: {$0.count < $1.count})
+}
+```
 
 3. **Given an array of type [String], return an array containing all Strings at least 4 characters long**
 
@@ -379,12 +417,27 @@ Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a",
 
 Output: `["Never", "trust", "computer", "can\'t", "throw", "window"]`
 
+```swift
+func strArrLength(inputArr input:[String]) -> [String] {
+    input.filter { (element) -> Bool in
+        if element.count >= 4 {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+```
+
 4. **Given an array of type [String], return a String containing all of the Strings from the array combined and separated by spaces.  Do this first without using the `joined(separator:) method`**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `Never trust a computer you can't throw out a window`
 
+```swift
+
+```
 
 ## Enums
 
