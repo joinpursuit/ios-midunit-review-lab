@@ -436,7 +436,13 @@ Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a",
 Output: `Never trust a computer you can't throw out a window`
 
 ```swift
-
+func strArr2Str(inputArr input: [String]) -> String {
+    var str = String()
+    for strElement in input {
+        str += strElement + " "
+    }
+    return str
+}
 ```
 
 ## Enums
@@ -455,6 +461,19 @@ Input: `[1,2,3,4,5,6], NumberType.odd`
 
 Output: `[1,3,5]`
 
+```swift
+    func enumEvenOrOdd (inputArr: [Int], evenOrOdd: NumberType) -> [Int] {
+        var newArr = [Int]()
+        
+        if evenOrOdd == .odd {
+           newArr = inputArr.filter({$0 % 2 == 1})
+        } else if evenOrOdd == .even {
+           newArr = inputArr.filter({$0 % 2 == 0})
+        }
+        return newArr
+    }
+```
+
 2. **Given a String and an instance of StringType (defined below), return the String either lowercased or uppercased**
 
 ```swift
@@ -467,6 +486,18 @@ enum StringType {
 Input: `"Design is not just what it looks like and feels like. Design is how it works", .uppercase`
 
 Output: ``"DESIGN IS NOT JUST WHAT IT LOOKS LIKE AND FEELS LIKE. DESIGN IS HOW IT WORKS"``
+
+```swift
+func allUpOrLow (inputStr: String, upOrLow: StringType) -> String {
+    var newStr = String()
+    if upOrLow == .lowercase {
+        newStr = inputStr.lowercased()
+    } else if upOrLow == .uppercase {
+        newStr = inputStr.uppercased()
+    }
+    return newStr
+}
+```
 
 3. **Given an array of type [FileStatus] (defined below) and an Int, return an array containing only files that were saved more than that many times**
 
@@ -486,3 +517,22 @@ enum FileStatus: CustomStringConvertible {
 Input: `[FileStatus.saved(numberOfVersions: 5), FileStatus.saved(numberOfVersions: 3), FileStatus.saved(numberOfVersions: 8)], 4`
 
 Output: `[File that has been saved 5 times, File that has been saved 8 times]`
+
+```swift
+func savedFiles (filesArr: [FileStatus], numOfSaves: Int) -> [String] {
+    var newArr = [String]()
+    
+    for files in filesArr {
+        switch files {
+        case .saved(let verNum):
+            if verNum > numOfSaves {
+                newArr.append(files.description)
+            }
+        case .unsaved:
+             continue
+        }
+    }
+    
+    return newArr
+}
+```
