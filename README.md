@@ -125,31 +125,86 @@ Output: `3`
 Input: `[nil, "We", "come", nil, "in", "peace"]`
 
 Output: `["We", "come", "in", "peace"]`
-
+```
+var arrayOfStrings = [nil, "We", "come", nil, "in", "peace"]
+var arrayNoNils = [String]()
+for value in arrayOfStrings {
+    if value != nil {
+        arrayNoNils.append(value ?? "")
+    }
+}
+print(arrayNoNils)
+```
 2. **Given an array of type [String?]? return an array of [String] removing all nil values**
 
 Input: `nil`
 
 Output: `[]`
+```
+var nils: [String?] = [nil]
+var emptyArr = [String]()
+for value in nils {
+    if value != nil {
+        emptyArr.append(value ?? "")
+    }
+}
+print(emptyArr)
+```
 
 3. **Given an array of type [Int?] return the sum of all non-nil values.  Use guard statements in your solution.**
 
 Input: `[4, nil, 9, 5, nil]`
 
 Output: `18`
+```
+var intArray = [4, nil, 9, 5, nil]
+var arrayOfNonNils = [Int]()
+for num in intArray {
+    guard let num = num else { continue }
+        arrayOfNonNils.append(num)
+}
+var sumOfNonNils = arrayOfNonNils.reduce(0, +)
+print(sumOfNonNils)
+```
 
 4. **Given an array of type [Int?]? return the sum of all non-nil values.  Use guard statements in your solution.**
 
 Input: `nil`
 
 Output: `0`
+```
+var nilArray: [Int?]? = [nil]
+var arrayOfNonNils2 = [Int]()
+for num in nilArray ?? [0] {
+    guard let num = num else { continue}
+    arrayOfNonNils2.append(num)
+}
+var sumOfNils = arrayOfNonNils2.reduce(0, +)
+print(sumOfNils)
+```
 
 5. **Given an array of type [Int?] and an optional Int, return the sum of all values not equal to the given number.  If the given number is nil, return the sum of all non-nil values.**
 
 Input: `[1, 1, nil, 3, 5, nil, 1, nil, 3, 5, nil, 5, nil, 3], 1`
 
 Output: `24`
-
+```
+var arrayOfNumsAndNils = [1, 1, nil, 3, 5, nil, 1, nil, 3, 5, nil, 5, nil, 3]
+var optionalInt: Int? = 1
+var arrayOnlyNums = [Int]()
+for num in arrayOfNumsAndNils {
+    guard let num = num else {continue}
+    arrayOnlyNums.append(num)
+}
+var arrayNoOnes = [Int]()
+for num in arrayOnlyNums {
+if num != optionalInt {
+    arrayNoOnes.append(num)
+    }
+}
+var sumOfNoOnes = arrayNoOnes.reduce(0, +)
+print(sumOfNoOnes)
+```
 
 ## Dictionaries
 
