@@ -443,7 +443,19 @@ enum StringType {
 Input: `"Design is not just what it looks like and feels like. Design is how it works", .uppercase`
 
 Output: ``"DESIGN IS NOT JUST WHAT IT LOOKS LIKE AND FEELS LIKE. DESIGN IS HOW IT WORKS"``
+```
+func lowercasedOrUppercased(str: String, type: StringType) -> String {
+    switch type {
+    case .lowercase:
+        return str.lowercased()
+    case .uppercase:
+        return str.uppercased()
+    }
+}
 
+var designString = "Design is not just what it looks like and feels like. Design is how it works"
+print(lowercasedOrUppercased(str: designString, type: .uppercase))
+```
 3. **Given an array of type [FileStatus] (defined below) and an Int, return an array containing only files that were saved more than that many times**
 
 ```swift
