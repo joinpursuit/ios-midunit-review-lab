@@ -41,6 +41,24 @@ Input: `Hello, there`
 
 Output: `Hllo, thr`
 
+```swift 
+
+var hello = "Hello, there"
+func letterRemoval (_ input: Character, _ string: String) -> String {
+    var newString = ""
+for letter in string {
+    if letter != input {
+        newString.append(letter)
+    }
+}
+    return newString
+}
+
+// example: print(letterRemoval("e", string))
+
+
+```
+
 
 ## Arrays
 
@@ -51,11 +69,45 @@ Input: `[1,5,2,4,1,4]`
 
 Output: `5`
 
+```swift 
+
+var array = [1,5,2,4,1,4]
+print(array.max() ?? 0)
+
+// or
+
+var largest = array[0]
+for num in array {
+    if num > highest {
+        largest = num
+    }
+}
+print(largest)
+
+```
+
 2. **Given an array of type [Int], return the smallest element**
 
 Input: `[1,5,2,4,1,4]`
 
 Output: `1`
+
+```swift
+var array = [1,5,2,4,1,4]
+print(array.min() ?? 0)
+
+//or 
+
+var smallest = array[0]
+for num in array {
+    if num < smallest {
+    smallest = num
+}
+}
+
+print(smallest)
+
+```
 
 3. **Given an array of type [Int], return its sum**
 
@@ -63,9 +115,34 @@ Input: `[1,5,2,4,1,4]`
 
 Output: `17`
 
+```swift
+
+var sum = 0
+
+for num in array {
+    sum += num
+}
+
+print(sum)
+
+```
+
 4. **Given an array of type [Double], return its average**
 
 Input: `[3,4.5,7.5,2,1]`
+
+```swift
+
+var array: [Double] = [3,4.5,7.5,2,1]
+var sum = 0.0
+for num in array {
+    sum += num
+}
+
+var average = sum / Double(array.count)
+print(average)
+
+```
 
 Output: `3.6`
 
@@ -75,6 +152,18 @@ Input: `[3,4.5,7.5,2,1], 3`
 
 Output: `12`
 
+```swift
+func greaterThan (_ input: Double, _ array: [Double]) -> Double {
+    var sum = 0.0
+    for num in array {
+        if num > input {
+            sum += num
+        }
+    }
+    return sum
+}
+```
+
 
 6. **Given an array of type [Double], return the product of all the elements**
 
@@ -82,9 +171,25 @@ Input: `[3,4.5,7.5,2,1]`
 
 Output: `202.5`
 
+```swift
+var array = [3,4.5,7.5,2,1]
+var product = 1.0
+for num in array {
+    product = num * product
+}
+print(product)
+```
+
 7. **Given an array of type [Int], return the second smallest value in the array**
 
 Input: `[3,6,1,9,4,8]`
+
+```swift
+var array = [3,6,1,9,4,8]
+print(array.sorted()[1])
+
+
+```
 
 Output: `3`
 
