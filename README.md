@@ -117,6 +117,38 @@ print(productOfDoubles)
 Input: `[3,6,1,9,4,8]`
 
 Output: `3`
+```
+var refactoredString = strFrequency.lowercased().replacingOccurrences(of: " ", with: "")
+var charDict = [Character: Int]()
+for char in refactoredString {
+    if let value = charDict[char] {
+        charDict[char] = value + 1
+    } else {
+        charDict[char] = 1
+    }
+}
+print(charDict)
+
+var mostFrequentLetter = ""
+var mostTimes = 0
+for (key, value) in charDict {
+    if value > mostTimes {
+        mostFrequentLetter = key.description
+        mostTimes = value
+    }
+}
+print(mostFrequentLetter)
+
+var secondMostTimes = 0
+var secondMostFrequentLetter = ""
+for (key, value) in charDict {
+    if value < mostTimes && value > secondMostTimes {
+        secondMostFrequentLetter = key.description
+        secondMostTimes = value
+    }
+}
+print(secondMostFrequentLetter)
+```
 
 ## Optionals
 
@@ -213,25 +245,116 @@ print(sumOfNoOnes)
 Input: `["apple", "apple", "banana", "banana", "banana", "cake", "cake"]`
 
 Output: `["apple", "banana", "cake"]`
+```
+var fruitArray = ["apple", "apple", "banana", "banana", "banana", "cake", "cake"]
+
+var fruitDict = [String:Int]()
+for fruit in fruitArray {
+    if let value = fruitDict[fruit] {
+        fruitDict[fruit] = value + 1
+    } else {
+        fruitDict[fruit] = 1
+    }
+}
+print(fruitDict)
+var fruitArrayNoDups = [String]()
+for (key, value) in fruitDict {
+    fruitArrayNoDups.append(key)
+}
+print(fruitArrayNoDups)
+```
 
 2. **Given a String, find the most frequently occurring letter**
 
 Input: `Never trust a computer you can't throw out a window ~ Steve Wozniak`
 
 Output: `t`
+```
+var strFrequency = "Never trust a computer you can't throw out a window ~ Steve Wozniak"
+
+var refactoredString = strFrequency.lowercased().replacingOccurrences(of: " ", with: "")
+var charDict = [Character: Int]()
+for char in refactoredString {
+    if let value = charDict[char] {
+        charDict[char] = value + 1
+    } else {
+        charDict[char] = 1
+    }
+}
+print(charDict)
+
+var mostFrequentLetter = ""
+var mostTimes = 0
+for (key, value) in charDict {
+    if value > mostTimes {
+        mostFrequentLetter = key.description
+        mostTimes = value
+    }
+}
+print(mostFrequentLetter)
+```
 
 3. **Given an array of type [Int], return a copy of the array that contains only elements that appear at least twice**
 
 Input: `[1,1,2,3,3,3,4,5,6,6,7]`
 
 Output: `[1,3,6]`
+```
+var arrayOfNumbers = [1,1,2,3,3,3,4,5,6,6,7]
+var dictOfNums = [Int: Int]()
+for num in arrayOfNumbers {
+    if let value = dictOfNums[num] {
+        dictOfNums[num] = value + 1
+    } else {
+        dictOfNums[num] = 1
+    }
+}
+var arrayOfFrequentNums = [Int]()
+for (key, value) in dictOfNums {
+    if value >= 2 {
+        arrayOfFrequentNums.append(key)
+    }
+}
+print(arrayOfFrequentNums)
+```
 
 4. **Given a String, find the second most frequently occurring letter in a string**
 
 Input: `Never trust a computer you can't throw out a window ~ Steve Wozniak`
 
 Output `o`
+```
+var refactoredString = strFrequency.lowercased().replacingOccurrences(of: " ", with: "")
+var charDict = [Character: Int]()
+for char in refactoredString {
+    if let value = charDict[char] {
+        charDict[char] = value + 1
+    } else {
+        charDict[char] = 1
+    }
+}
+print(charDict)
 
+var mostFrequentLetter = ""
+var mostTimes = 0
+for (key, value) in charDict {
+    if value > mostTimes {
+        mostFrequentLetter = key.description
+        mostTimes = value
+    }
+}
+print(mostFrequentLetter)
+
+var secondMostTimes = 0
+var secondMostFrequentLetter = ""
+for (key, value) in charDict {
+    if value < mostTimes && value > secondMostTimes {
+        secondMostFrequentLetter = key.description
+        secondMostTimes = value
+    }
+}
+print(secondMostFrequentLetter
+```
 
 ## Closures
 
@@ -240,25 +363,46 @@ Output `o`
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `["Never", "a", "a", "can\'t", "computer", "out", "throw", "trust", "window", "you"]`
+```
+var arrayOfWords = ["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]
+arrayOfWords.sort { (str1, str2) -> Bool in
+    str1 < str2
+}
+print(arrayOfWords)
+```
 
 2. **Given an array of type [String], return an array that contains the Strings sorted by length**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `["a", "a", "you", "out", "Never", "trust", "can\'t", "throw", "window", "computer"]`
-
+```
+arrayOfWords.sort { (str1, str2) -> Bool in
+    str1.count < str2.count
+}
+print(arrayOfWords)
+```
 3. **Given an array of type [String], return an array containing all Strings at least 4 characters long**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `["Never", "trust", "computer", "can\'t", "throw", "window"]`
+```
+var wordsFourOrMore = arrayOfWords.filter { (str) -> Bool in
+    str.count >= 4
+}
+print(wordsFourOrMore)
+```
 
 4. **Given an array of type [String], return a String containing all of the Strings from the array combined and separated by spaces.  Do this first without using the `joined(separator:) method`**
 
 Input: `["Never", "trust", "a", "computer", "you", "can't", "throw", "out", "a", "window"]`
 
 Output: `Never trust a computer you can't throw out a window`
-
+```
+var oneString = arrayOfWords.reduce("", { $0 + " " + $1})
+print(oneString)
+```
 
 ## Enums
 
@@ -275,7 +419,18 @@ enum NumberType {
 Input: `[1,2,3,4,5,6], NumberType.odd`
 
 Output: `[1,3,5]`
-
+```
+func evenOrOdd(arr:[Int],type: NumberType) -> [Int] {
+    switch type {
+    case .even:
+     return arr.filter( {$0 % 2 == 0} )
+        
+    case .odd:
+      return arr.filter( {$0 % 2 == 1})
+    }
+}
+print(evenOrOdd(arr: [1,2,3,4,5,6], type: NumberType.odd))
+```
 2. **Given a String and an instance of StringType (defined below), return the String either lowercased or uppercased**
 
 ```swift
